@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reach Academy | Land International Clients With Almost No Budget</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0B0D;
+    --bg-raised:#121417;
+    --bg-card:#15181B;
+    --line:#232729;
+    --ink:#F1F3F4;
+    --ink-dim:#B6BCBF;
+    --steel:#82898D;
+    --signal:#2DD4BF;
+    --signal-hover:#4FE3D1;
+    --signal-glow:rgba(45,212,191,0.13);
+    --signal-border:rgba(45,212,191,0.28);
+    --signal-bg:rgba(45,212,191,0.08);
+    --green:#4ADE80;
+    --green-bg:rgba(74,222,128,0.10);
+    --red:#FB6464;
+    --red-bg:rgba(251,100,100,0.10);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-0.02em;line-height:1.05;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
+
+  /* grain */
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,11,13,0.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .brand{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.01em;}
+  .nav-cta{background:var(--signal);color:#0A0B0D;font-weight:700;font-size:14px;padding:10px 22px;border-radius:6px;transition:background .15s ease,transform .15s ease;}
+  .nav-cta:hover{background:var(--signal-hover);transform:translateY(-1px);}
+
+  /* EYEBROW PILL */
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;
+    letter-spacing:0.07em;text-transform:uppercase;color:var(--signal);
+    background:var(--signal-bg);border:1px solid var(--signal-border);
+    padding:6px 14px;border-radius:99px;margin-bottom:28px;
+  }
+  .eyebrow .pulse{
+    width:6px;height:6px;border-radius:50%;background:var(--signal);flex-shrink:0;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(45,212,191,0.5);}
+    70%{box-shadow:0 0 0 8px rgba(45,212,191,0);}
+    100%{box-shadow:0 0 0 0 rgba(45,212,191,0);}
+  }
+
+  /* HERO */
+  .hero{position:relative;padding:160px 0 0;border-bottom:1px solid var(--line);overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-180px;right:-180px;width:560px;height:560px;background:radial-gradient(circle,var(--signal-glow) 0%,transparent 70%);pointer-events:none;}
+  .hero h1{font-size:clamp(38px,5.8vw,72px);max-width:860px;margin-bottom:22px;}
+  .hero h1 .accent{color:var(--signal);font-style:italic;}
+  .hero p.lead{font-size:18px;color:var(--ink-dim);max-width:600px;margin-bottom:40px;line-height:1.65;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:60px;}
+
+  .btn-primary{
+    background:var(--signal);color:#0A0B0D;font-weight:700;font-size:15px;
+    padding:15px 28px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;
+    transition:background .15s ease,transform .15s ease,box-shadow .15s ease;
+  }
+  .btn-primary:hover{background:var(--signal-hover);transform:translateY(-2px);box-shadow:0 8px 28px rgba(45,212,191,0.28);}
+  .btn-secondary{
+    border:1px solid var(--line);color:var(--ink);font-weight:600;font-size:15px;
+    padding:15px 28px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;
+    transition:border-color .15s ease,background .15s ease;
+  }
+  .btn-secondary:hover{border-color:#3a3e42;background:var(--bg-raised);}
+
+  /* HERO STATS — fixed grid with proper border handling */
+  .hero-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  margin-top:56px;
+  padding:44px 0 44px;
+  gap:0;
+}
+.stat{
+  display:flex;
+  flex-direction:column;
+  padding:0 32px;
+  position:relative;
+}
+.stat:first-child{padding-left:0;}
+.stat:last-child{padding-right:0;}
+.stat:not(:last-child)::after{
+  content:'';
+  position:absolute;
+  right:0; top:0; bottom:0;
+  width:1px;
+  background:var(--line);
+}
+  .hero-stats .stat:first-child{padding-left:0;}
+  .hero-stats .stat:last-child{border-right:none;padding-right:0;}
+  .hero-stats .num{
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:34px;
+    color:var(--signal);margin-bottom:8px;line-height:1;
+  }
+  .hero-stats .lbl{font-size:13px;color:var(--steel);line-height:1.45;}
+
+  /* SECTION UTILITIES */
+  .section-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--signal);text-transform:uppercase;letter-spacing:0.08em;display:block;margin-bottom:16px;}
+  .section-head{max-width:680px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,42px);margin-bottom:16px;}
+  .section-head p{color:var(--ink-dim);font-size:17px;line-height:1.65;}
+  .section-center{text-align:center;max-width:580px;margin:0 auto 56px;}
+
+  /* LEDGER */
+  .ledger-section{padding:112px 0;border-bottom:1px solid var(--line);}
+  .ledger{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .ledger-header{
+    display:grid;grid-template-columns:1.7fr 1fr 1fr;
+    padding:16px 28px;border-bottom:1px solid var(--line);
+    font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--steel);
+  }
+  .ledger-row{
+    display:grid;grid-template-columns:1.7fr 1fr 1fr;
+    padding:22px 28px;border-bottom:1px solid var(--line);align-items:center;
+  }
+  .ledger-row:last-child{border-bottom:none;}
+  .ledger-row .item{font-weight:600;font-size:15px;}
+  .ledger-row .item span{display:block;font-weight:400;font-size:13px;color:var(--steel);margin-top:3px;}
+  .cost{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;}
+  .cost.them{color:var(--red);}
+  .cost.us{color:var(--green);}
+  .ledger-row.total{background:var(--bg-raised);}
+  .ledger-row.total .item{font-size:16px;font-weight:700;}
+  .ledger-row.total .cost{font-size:18px;font-weight:700;}
+
+  /* COMPARE */
+  .compare-section{padding:112px 0;border-bottom:1px solid var(--line);}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .compare-card{border-radius:14px;padding:36px;border:1px solid var(--line);}
+  .compare-card.bad{background:var(--bg-card);}
+  .compare-card.good{background:linear-gradient(160deg,rgba(45,212,191,0.07),rgba(45,212,191,0.02));border-color:var(--signal-border);}
+  .compare-card h3{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--steel);margin-bottom:24px;}
+  .compare-card.good h3{color:var(--signal);}
+  .compare-list{list-style:none;}
+  .compare-list li{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--ink-dim);align-items:flex-start;line-height:1.5;}
+  .compare-list li:last-child{border-bottom:none;}
+  .compare-card.good .compare-list li{color:var(--ink);}
+  .mark{flex-shrink:0;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-top:2px;}
+  .mark.x{background:var(--red-bg);color:var(--red);}
+  .mark.check{background:var(--green-bg);color:var(--green);}
+
+  /* VIDEO */
+  .video-section{padding:112px 0;border-bottom:1px solid var(--line);background:var(--bg-raised);}
+  .video-wrap{max-width:820px;margin:0 auto;}
+  .video-frame{
+    position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+    border:1px solid var(--line);
+    background:radial-gradient(ellipse at 30% 30%,rgba(45,212,191,0.08),transparent 55%),linear-gradient(135deg,#161a1e,#0d1012);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    transition:border-color .2s ease;
+  }
+  .video-frame:hover{border-color:var(--signal-border);}
+  .play-btn{
+    width:80px;height:80px;border-radius:50%;background:var(--signal);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .2s ease,box-shadow .2s ease;
+    box-shadow:0 0 0 0 rgba(45,212,191,0.3);
+  }
+  .video-frame:hover .play-btn{transform:scale(1.08);box-shadow:0 0 0 14px rgba(45,212,191,0.12);}
+  .play-btn::before{content:'';width:0;height:0;border-style:solid;border-width:13px 0 13px 20px;border-color:transparent transparent transparent #0A0B0D;margin-left:5px;}
+  .video-caption{text-align:center;margin-top:18px;color:var(--steel);font-size:14px;}
+
+  /* SYSTEM */
+  .system-section{padding:112px 0;border-bottom:1px solid var(--line);}
+  .system-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .system-card{background:var(--bg);padding:40px 32px;}
+  .system-card .step-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--signal);margin-bottom:20px;display:block;letter-spacing:0.04em;}
+  .system-card h4{font-size:20px;margin-bottom:12px;}
+  .system-card p{color:var(--ink-dim);font-size:14px;line-height:1.65;}
+
+  /* CURRICULUM */
+  .curriculum-section{padding:112px 0;border-bottom:1px solid var(--line);background:var(--bg-raised);}
+  .curr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .curr-card{border:1px solid var(--line);border-radius:12px;padding:26px 28px;background:var(--bg);transition:border-color .15s ease;}
+  .curr-card:hover{border-color:#383c40;}
+  .curr-card .curr-mod{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--signal);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;display:block;}
+  .curr-card h4{font-size:17px;margin-bottom:7px;font-weight:700;}
+  .curr-card p{font-size:13.5px;color:var(--steel);line-height:1.5;}
+
+  /* PRICING */
+  .pricing-section{padding:112px 0;border-bottom:1px solid var(--line);}
+  .price-card{
+    max-width:500px;margin:0 auto;
+    background:var(--bg-card);border:1px solid var(--signal-border);
+    border-radius:18px;padding:48px 44px;position:relative;overflow:hidden;
+  }
+  .price-card::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:380px;height:200px;background:radial-gradient(ellipse,var(--signal-glow),transparent 70%);pointer-events:none;}
+  .price-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--signal);background:var(--signal-bg);border:1px solid var(--signal-border);padding:5px 12px;border-radius:99px;margin-bottom:24px;}
+  .price-amount{font-family:'Archivo',sans-serif;font-weight:900;font-size:54px;line-height:1;margin-bottom:4px;}
+  .price-amount span{font-size:17px;font-weight:500;color:var(--steel);font-family:'Space Grotesk',sans-serif;}
+  .price-sub{color:var(--steel);font-size:14px;margin-bottom:30px;}
+  .price-features{list-style:none;margin-bottom:34px;}
+  .price-features li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;align-items:flex-start;line-height:1.5;}
+  .price-features li:last-child{border-bottom:none;}
+  .price-card .btn-primary{width:100%;justify-content:center;font-size:16px;padding:16px;}
+  .price-note{text-align:center;font-size:13px;color:var(--steel);margin-top:16px;line-height:1.5;}
+
+  /* FAQ */
+  .faq-section{padding:112px 0;border-bottom:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item:first-child{border-top:1px solid var(--line);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;color:var(--ink);font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;padding:24px 4px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:20px;}
+  .faq-q .icon{font-family:'JetBrains Mono',monospace;color:var(--signal);font-size:20px;transition:transform .25s ease;flex-shrink:0;line-height:1;}
+  .faq-item.open .faq-q .icon{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;color:var(--ink-dim);font-size:15px;line-height:1.7;padding:0 4px;}
+  .faq-item.open .faq-a{max-height:300px;padding:0 4px 24px;}
+
+  /* FOOTER */
+  footer{padding:52px 0;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-brand{font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;letter-spacing:-0.01em;}
+  .foot-note{color:var(--steel);font-size:13px;}
+
+  /* PAYMENT PAGE */
+  .pay-page{display:none;}
+  .pay-page.active{display:block;}
+  .main-page.hidden{display:none;}
+
+  .pay-hero{padding:140px 0 52px;text-align:center;}
+  .pay-hero h1{font-size:clamp(28px,4vw,44px);max-width:640px;margin:20px auto 16px;}
+  .pay-hero p{color:var(--ink-dim);font-size:16px;max-width:520px;margin:0 auto;}
+  .back-link{display:inline-flex;align-items:center;gap:8px;color:var(--steel);font-size:14px;font-weight:600;cursor:pointer;transition:color .15s ease;}
+  .back-link:hover{color:var(--ink);}
+  .pay-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;padding-bottom:120px;align-items:start;}
+  .pay-card{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:34px;}
+  .pay-card h3{font-size:19px;margin-bottom:22px;}
+  .pay-detail{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--line);}
+  .pay-detail:last-of-type{border-bottom:none;}
+  .pay-detail .dlabel{font-size:11px;color:var(--steel);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;}
+  .pay-detail .dvalue{font-size:15px;font-weight:600;font-family:'JetBrains Mono',monospace;}
+  .copy-btn{background:var(--bg-raised);border:1px solid var(--line);color:var(--ink-dim);font-size:11px;padding:5px 10px;border-radius:5px;cursor:pointer;font-family:'JetBrains Mono',monospace;transition:border-color .15s ease,color .15s ease;flex-shrink:0;margin-left:12px;}
+  .copy-btn:hover{border-color:var(--signal);color:var(--signal);}
+  .pay-note{margin-top:22px;padding:15px 17px;background:rgba(45,212,191,0.05);border:1px solid var(--signal-border);border-radius:10px;font-size:13px;color:var(--ink-dim);line-height:1.6;}
+  .form-card{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:34px;}
+  .form-card h3{font-size:19px;margin-bottom:6px;}
+  .form-sub{color:var(--steel);font-size:14px;margin-bottom:26px;}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:7px;color:var(--ink-dim);}
+  .form-group input,.form-group select,.form-group textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--ink);font-family:'Space Grotesk',sans-serif;font-size:14px;transition:border-color .15s ease;}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--signal);}
+  .form-group select option{background:var(--bg-card);}
+  .form-group textarea{resize:vertical;min-height:80px;}
+  .file-drop{border:1.5px dashed var(--line);border-radius:10px;padding:26px 16px;text-align:center;cursor:pointer;transition:border-color .15s ease,background .15s ease;display:block;}
+  .file-drop:hover{border-color:var(--signal);background:rgba(45,212,191,0.03);}
+  .file-drop .ficon{font-size:22px;margin-bottom:8px;display:block;}
+  .file-drop p{font-size:13px;color:var(--steel);}
+  .file-drop p.fname{color:var(--green);font-weight:600;}
+  .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .submit-btn{width:100%;background:var(--signal);color:#0A0B0D;border:none;font-weight:700;font-size:15px;padding:15px;border-radius:8px;cursor:pointer;margin-top:6px;transition:background .15s ease,transform .15s ease;font-family:'Space Grotesk',sans-serif;}
+  .submit-btn:hover{background:var(--signal-hover);transform:translateY(-1px);}
+  .submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+  .form-success{display:none;text-align:center;padding:40px 20px;}
+  .form-success.active{display:block;}
+  .form-success .check-circle{width:60px;height:60px;border-radius:50%;background:var(--green-bg);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 18px;}
+  .form-success h3{font-size:20px;margin-bottom:10px;}
+  .form-success p{color:var(--ink-dim);font-size:14px;line-height:1.6;}
+
+  /* RESPONSIVE */
+  @media(max-width:860px){
+    /* GLOBAL */
+    .wrap{padding:0 16px;}
+
+    /* NAV */
+    nav .wrap{height:58px;}
+    .brand{font-size:15px;}
+    .nav-cta{font-size:13px;padding:8px 16px;}
+
+    /* HERO */
+    .hero{padding:100px 0 0;}
+    .hero h1{font-size:clamp(30px,8vw,48px);margin-bottom:18px;}
+    .hero p.lead{font-size:15px;margin-bottom:28px;}
+    .hero-ctas{flex-direction:column;gap:10px;margin-bottom:40px;}
+    .btn-primary,.btn-secondary{width:100%;justify-content:center;font-size:15px;padding:14px 20px;}
+
+    /* EYEBROW */
+    .eyebrow{font-size:10px;padding:5px 12px;margin-bottom:20px;}
+
+    /* HERO STATS */
+    .hero-stats{
+      grid-template-columns:1fr 1fr;
+      row-gap:0;
+      margin-top:36px;
+      padding:0;
+    }
+    .stat{
+      padding:24px 16px;
+      position:relative;
+    }
+    /* reset the ::after pseudo borders, redo for 2-col grid */
+    .stat::after{display:none!important;}
+    .stat:first-child{padding-left:16px;}
+    .stat:last-child{padding-right:16px;}
+
+    /* top-left and top-right: border-bottom only */
+    .hero-stats .stat:nth-child(1),
+    .hero-stats .stat:nth-child(2){border-bottom:1px solid var(--line);}
+    /* left column: border-right */
+    .hero-stats .stat:nth-child(1),
+    .hero-stats .stat:nth-child(3){border-right:1px solid var(--line);}
+
+    .hero-stats .num{font-size:26px;}
+    .hero-stats .lbl{font-size:12px;}
+
+    /* SECTIONS */
+    .ledger-section,.compare-section,.video-section,.system-section,.curriculum-section,.pricing-section,.faq-section{padding:64px 0;}
+    .section-head{margin-bottom:32px;}
+    .section-head h2{font-size:clamp(22px,6vw,34px);}
+    .section-head p{font-size:15px;}
+    .section-center{margin-bottom:32px;}
+    .section-center h2{font-size:clamp(22px,6vw,34px);}
+
+    /* LEDGER */
+    .ledger-header{display:none;}
+    .ledger-row{
+      grid-template-columns:1fr;
+      gap:6px;
+      padding:16px 18px;
+    }
+    .ledger-row .item{font-size:14px;}
+    .ledger-row .item span{font-size:12px;}
+    .cost{font-size:13px;}
+    .cost::before{content:attr(data-label);display:inline;color:var(--steel);font-size:11px;margin-right:6px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.04em;}
+    .ledger-row.total .cost{font-size:15px;}
+
+    /* COMPARE */
+    .compare-grid{grid-template-columns:1fr;}
+    .compare-card{padding:26px 20px;}
+    .compare-list li{font-size:14px;padding:11px 0;}
+
+    /* VIDEO */
+    .video-wrap{max-width:100%;}
+
+    /* SYSTEM */
+    .system-grid{grid-template-columns:1fr;}
+    .system-card{padding:28px 22px;}
+    .system-card h4{font-size:17px;}
+
+    /* CURRICULUM */
+    .curr-grid{grid-template-columns:1fr;}
+    .curr-card{padding:20px 18px;}
+
+    /* PRICING */
+    .price-card{padding:32px 22px;max-width:100%;}
+    .price-amount{font-size:40px;}
+
+    /* FAQ */
+    .faq-q{font-size:15px;padding:20px 4px;}
+
+    /* FOOTER */
+    footer{padding:36px 0;}
+    footer .wrap{flex-direction:column;text-align:center;gap:10px;}
+
+    /* PAYMENT PAGE */
+    .pay-hero{padding:100px 0 36px;}
+    .pay-hero h1{font-size:clamp(22px,6vw,34px);margin:16px auto 12px;}
+    .pay-hero p{font-size:14px;}
+    .pay-grid{grid-template-columns:1fr;gap:20px;padding-bottom:60px;}
+    .pay-card{padding:24px 18px;}
+    .form-card{padding:24px 18px;}
+    .form-row-2{grid-template-columns:1fr;}
+    .pay-detail .dvalue{font-size:14px;}
+
+    /* FIX: Final Step eyebrow on payment page — remove inline margin-left that hides it */
+    .pay-hero .eyebrow{
+      margin-left:auto!important;
+      margin-right:auto!important;
+      display:flex!important;
+      position:static!important;
+      right:auto!important;
+    }
+  }
+
+  @media(max-width:400px){
+    .hero h1{font-size:28px;}
+    .hero-stats .num{font-size:22px;}
+    .price-amount{font-size:34px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#" onclick="showMain();return false;">REACH ACADEMY</a>
+    <a href="#pricing" class="nav-cta">Join Now</a>
+  </div>
+</nav>
+
+<!-- MAIN PAGE -->
+<div class="main-page" id="mainPage">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="pulse"></span>For Pakistanis who want to earn in USD &amp; GBP</div>
+      <h1>Get your first international client.<br>With a <span class="accent">zero investment</span><br>AI agency model.</h1>
+      <p class="lead">Almost everyone teaching this online tells you to spend lakhs running ads in the US or UK. We teach the part nobody else will, a complete, very low-cost system to land real $1,000–$1,500+ clients from outside Pakistan, starting with what's already in your pocket.</p>
+      <div class="hero-ctas">
+        <a href="#pricing" class="btn-primary">Join the mentorship →</a>
+        <a href="#proof" class="btn-secondary">See what's possible</a>
+      </div>
+      <div class="hero-stats">
+  <div class="stat">
+    <div class="num"><span class="count" data-target="0" data-prefix="Rs " data-suffix="">Rs 0</span></div>
+    <div class="lbl">Spent on ads. We never use paid marketing to find clients.</div>
+  </div>
+  <div class="stat">
+<div class="num">
+  <span class="count" data-target="1" data-prefix="$" data-suffix="">$1</span>
+  <span style="color:var(--signal);">–</span>
+  <span class="count" data-target="2" data-prefix="" data-suffix="K">2K</span>
+</div>
+    <div class="lbl">Realistic value of a first client, closed in your first weeks.</div>
+  </div>
+  <div class="stat">
+    <div class="num"><span class="count" data-target="15" data-prefix="<" data-suffix="K">&lt;15K</span></div>
+    <div class="lbl">Total starting cost in PKR, a fraction of what others teach.</div>
+  </div>
+  <div class="stat">
+    <div class="num"><span style="letter-spacing:-1px;">A–Z</span></div>
+    <div class="lbl">From zero presence to your first international payment.</div>
+  </div>
+</div>
+    </div>
+  </section>
+
+  <!-- LEDGER -->
+  <section class="ledger-section" id="proof">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">The Real Cost Comparison</span>
+        <h2>Other courses sell a dream that costs lakhs to actually run.</h2>
+        <p>Most "earn from international clients" courses hand you an idea, then point you toward paid ads in the US or UK, some of the most expensive ad markets on earth. Here's the honest comparison.</p>
+      </div>
+      <div class="ledger">
+        <div class="ledger-header">
+          <div>Line item</div>
+          <div>What's usually taught</div>
+          <div>The Reach approach</div>
+        </div>
+        <div class="ledger-row">
+          <div class="item">Technical learning curve<span>Months before you can sell anything</span></div>
+          <div class="cost them" data-label="Usually:">Weeks to months</div>
+          <div class="cost us" data-label="Reach:">Not required to start</div>
+        </div>
+        <div class="ledger-row">
+          <div class="item">US / UK ad spend<span>Facebook &amp; Instagram, monthly</span></div>
+          <div class="cost them" data-label="Usually:">Rs 50,000 – 200,000+</div>
+          <div class="cost us" data-label="Reach:">Rs 0</div>
+        </div>
+        <div class="ledger-row">
+          <div class="item">Building what you sell<span>Getting the work delivered</span></div>
+          <div class="cost them" data-label="Usually:">Rs 80,000+ upfront</div>
+          <div class="cost us" data-label="Reach:">A model that needs no upfront salaries</div>
+        </div>
+        <div class="ledger-row">
+          <div class="item">Reaching decision makers<span>Getting in front of the right buyers</span></div>
+          <div class="cost them" data-label="Usually:">Expensive ads or guesswork</div>
+          <div class="cost us" data-label="Reach:">A specific, low-cost, highly effective outreach system</div>
+        </div>
+        <div class="ledger-row total">
+          <div class="item">Total to realistically start</div>
+          <div class="cost them" data-label="Usually:">Rs 150,000 – 300,000+</div>
+          <div class="cost us" data-label="Reach:">Under Rs 15,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="compare-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Why This Is Different</span>
+        <h2>Almost nobody in Pakistan teaches this properly.</h2>
+        <p>A few people teach the idea. Fewer teach how to actually get clients. The ones that do still point you toward an ad budget most people starting out simply don't have.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card bad">
+          <h3>The Usual Advice</h3>
+          <ul class="compare-list">
+            <li><span class="mark x">✕</span>Spend months on technical learning before you can sell anything</li>
+            <li><span class="mark x">✕</span>Run paid ads in the US or UK, some of the priciest markets on earth</li>
+            <li><span class="mark x">✕</span>Market like it's B2C, when you're really selling business to business</li>
+            <li><span class="mark x">✕</span>Vague advice, "just go find clients," with no real structure or script</li>
+            <li><span class="mark x">✕</span>You're expected to do everything yourself, alone, with no system</li>
+          </ul>
+        </div>
+        <div class="compare-card good">
+          <h3>The Reach Approach</h3>
+          <ul class="compare-list">
+            <li><span class="mark check">✓</span>Start without needing to be technical, the model is built around that</li>
+            <li><span class="mark check">✓</span>Zero ad spend, a specific, repeatable outreach system instead</li>
+            <li><span class="mark check">✓</span>B2B from day one, selling to business owners, the right way</li>
+            <li><span class="mark check">✓</span>Word-for-word scripts and exact templates, not vague theory</li>
+            <li><span class="mark check">✓</span>A complete structure for getting help without paying anything upfront</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO (middle) -->
+  <section class="video-section">
+    <div class="wrap">
+      <div class="section-center">
+        <span class="section-tag">Watch First</span>
+        <h2>A 2-minute breakdown before you join</h2>
+      </div>
+      <div class="video-wrap">
+        <div class="video-frame" onclick="alert('Paste your YouTube embed link here.')">
+          <div class="play-btn"></div>
+        </div>
+        <p class="video-caption">Hamza explains exactly who this is for and what changes once you're inside, watch before you commit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="system-section" id="system">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">What You Actually Get</span>
+        <h2>A complete system, not just information.</h2>
+        <p>Three things most people are missing, all structured so you're never paying for anything you can't already afford.</p>
+      </div>
+      <div class="system-grid">
+        <div class="system-card">
+          <span class="step-num">01 / POSITIONING</span>
+          <h4>Look like a real, established business</h4>
+          <p>The exact setup that makes international buyers take you seriously from the very first message, built to work from Pakistan, on a minimal budget.</p>
+        </div>
+        <div class="system-card">
+          <span class="step-num">02 / DELIVERY</span>
+          <h4>A way to deliver without paying first</h4>
+          <p>A specific structure for getting your clients' work done, without needing to pay anyone a salary before you've been paid yourself.</p>
+        </div>
+        <div class="system-card">
+          <span class="step-num">03 / CLIENTS</span>
+          <h4>A repeatable way to reach buyers abroad</h4>
+          <p>Exactly who to contact, what to say, and how to follow up, getting you in front of decision makers in the US and UK without spending on ads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="curriculum-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Inside The Mentorship</span>
+        <h2>Structured, step by step. Nothing left vague.</h2>
+        <p>Every stage of going from zero presence to your first international payment, in order, with scripts and templates at every step.</p>
+      </div>
+      <div class="curr-grid">
+        <div class="curr-card">
+          <span class="curr-mod">Stage 01</span>
+          <h4>The Foundation</h4>
+          <p>Why this model works, and exactly what to expect in your first 30 days.</p>
+        </div>
+        <div class="curr-card">
+          <span class="curr-mod">Stage 02</span>
+          <h4>Building Your Presence</h4>
+          <p>Setting yourself up to look established to buyers in the US and UK.</p>
+        </div>
+        <div class="curr-card">
+          <span class="curr-mod">Stage 03</span>
+          <h4>Choosing What To Sell</h4>
+          <p>Packaging a service buyers actually want, in a way that's simple to explain.</p>
+        </div>
+        <div class="curr-card">
+          <span class="curr-mod">Stage 04</span>
+          <h4>Getting It Delivered</h4>
+          <p>A low-cost way to get client work done without paying upfront.</p>
+        </div>
+        <div class="curr-card">
+          <span class="curr-mod">Stage 05</span>
+          <h4>Finding The Right Buyers</h4>
+          <p>Identifying exactly who to reach out to, and where to find them.</p>
+        </div>
+        <div class="curr-card">
+          <span class="curr-mod">Stage 06</span>
+          <h4>Outreach That Gets Replies</h4>
+          <p>The exact messaging approach and scripts that start real conversations.</p>
+        </div>
+        <div class="curr-card">
+          <span class="curr-mod">Stage 07</span>
+          <h4>Closing The Deal</h4>
+          <p>Running calls, handling objections, and sending proposals that convert.</p>
+        </div>
+        <div class="curr-card">
+          <span class="curr-mod">Stage 08</span>
+          <h4>Getting Paid Internationally</h4>
+          <p>Receiving USD / GBP payments and converting them into PKR properly.</p>
+        </div>
+        <div class="curr-card">
+          <span class="curr-mod">Stage 09</span>
+          <h4>Keeping Clients Happy</h4>
+          <p>Managing delivery and expectations so clients stay and refer others.</p>
+        </div>
+        <div class="curr-card">
+          <span class="curr-mod">Stage 10</span>
+          <h4>Scaling Past Your First Client</h4>
+          <p>Turning one client into a real, growing income stream.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="wrap">
+      <div class="section-center">
+        <span class="section-tag">Join The Mentorship</span>
+        <h2>One client covers this for the next two years.</h2>
+        <p style="color:var(--ink-dim);font-size:17px;line-height:1.65;">A single first deal is worth $1,000–$1,500. This is what it costs to learn exactly how to land it, and every one after that.</p>
+      </div>
+      <div class="price-card">
+        <span class="price-badge">Founding member price</span>
+        <div class="price-amount">Rs 14,999<span> / month</span></div>
+        <div class="price-sub">Cancel anytime. No long-term contract.</div>
+        <ul class="price-features">
+          <li><span class="mark check">✓</span>The complete step-by-step system, structured and easy to follow</li>
+          <li><span class="mark check">✓</span>Every script and message template you need, ready to use</li>
+          <li><span class="mark check">✓</span>Live Q&amp;A calls with Hamza, ask anything, get real answers</li>
+          <li><span class="mark check">✓</span>Private live community, not a recorded course, a real conversation</li>
+          <li><span class="mark check">✓</span>Ready-to-use templates for every stage of the process</li>
+          <li><span class="mark check">✓</span>Direct access to Hamza until your first deal closes</li>
+        </ul>
+        <a href="#" class="btn-primary" onclick="showPayment();return false;">Join Now →</a>
+        <p class="price-note">Payment via bank transfer or Easypaisa, attach your proof on the next page and get added within 24 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Before You Join</span>
+        <h2>Questions people actually ask</h2>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I really not need a marketing budget?<span class="icon">+</span></button>
+        <div class="faq-a">Correct. You won't be spending on Facebook or Instagram ads. There's a small one-time setup cost (realistically under Rs 15-20k) for the essentials, but it's a fraction of the lakhs most courses point you toward for ads.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need to know how to code or build AI?<span class="icon">+</span></button>
+        <div class="faq-a">No. The model is built specifically so you don't need to be the one building or developing anything yourself. Your role is the business side, and the mentorship covers exactly how delivery works without technical skills.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I find clients without ads?<span class="icon">+</span></button>
+        <div class="faq-a">Through a specific, repeatable outreach system covered step by step inside the mentorship. This is how real B2B agencies operate, ads are built for consumer products, not for selling services to business owners.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What if I get stuck or don't close any clients?<span class="icon">+</span></button>
+        <div class="faq-a">That's exactly what the live community is for. You bring your real outreach, your real conversations, your actual problems, and we work through them together. You're not left alone to figure it out.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How does payment and access work?<span class="icon">+</span></button>
+        <div class="faq-a">You transfer via bank transfer or Easypaisa, then submit your details and payment screenshot on the next page. You'll be manually verified and added to the private community within 24 hours.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I cancel anytime?<span class="icon">+</span></button>
+        <div class="faq-a">Yes. This is a monthly mentorship with no long-term commitment. Stay as long as it's useful to you.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-brand">REACH ACADEMY</div>
+      <div class="foot-note">© 2026 | Built for people starting with nothing but a laptop.</div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- PAYMENT PAGE -->
+<div class="pay-page" id="payPage">
+  <div class="wrap">
+    <div class="pay-hero">
+      <a class="back-link" onclick="showMain();return false;" style="display:block;text-align:left;">← Back</a>
+      <div class="eyebrow" style="margin-top:20px;margin-left:auto;margin-right:auto;display:flex;width:fit-content;position:relative;"><span class="pulse"></span>Final Step</div>
+      <h1>Send your payment, then confirm below.</h1>
+      <p>Transfer Rs 14,999 to the account below, then fill in the form with a screenshot. You'll be added within 24 hours.</p>
+    </div>
+    <div class="pay-grid">
+      <div class="pay-card">
+        <h3>Payment Details</h3>
+        <div class="pay-detail">
+          <div>
+            <div class="dlabel">Bank Name</div>
+            <div class="dvalue">Dubai Islamic Bank</div>
+          </div>
+          <button class="copy-btn" onclick="copyText('YOUR BANK NAME',this)">Copy</button>
+        </div>
+        <div class="pay-detail">
+          <div>
+            <div class="dlabel">Account Title</div>
+            <div class="dvalue">HAMZA KHAN</div>
+          </div>
+          <button class="copy-btn" onclick="copyText('HAMZA KHAN',this)">Copy</button>
+        </div>
+        <div class="pay-detail">
+          <div>
+            <div class="dlabel">Account No.</div>
+            <div class="dvalue">0955386001</div>
+          </div>
+          <button class="copy-btn" onclick="copyText('PK00XXXX0000000000000000',this)">Copy</button>
+        </div>
+        <div class="pay-detail">
+          <div>
+            <div class="dlabel">Easypaisa/Jazzcash Number</div>
+            <div class="dvalue">0316-5156064</div>
+          </div>
+          <button class="copy-btn" onclick="copyText('03XXXXXXXXX',this)">Copy</button>
+        </div>
+        <div class="pay-detail">
+          <div>
+            <div class="dlabel">Amount</div>
+            <div class="dvalue" style="color:var(--signal);">Rs 14,999</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card" id="formCard">
+        <h3>Confirm Your Payment</h3>
+        <p class="form-sub">Fill this in right after you transfer — it goes straight to Hamza's inbox.</p>
+        <form id="payForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New Payment Proof — Reach Academy">
+          <input type="hidden" name="from_name" value="Reach Academy Website">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="Full Name" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label>Phone (WhatsApp)</label>
+              <input type="tel" name="Phone" required placeholder="03XX-XXXXXXX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="Email" required placeholder="you@email.com">
+          </div>
+          <div class="form-group">
+            <label>Payment Method</label>
+            <select name="Payment Method" required>
+              <option value="">Select one</option>
+              <option value="Bank Transfer">Bank Transfer</option>
+              <option value="Easypaisa">Easypaisa</option>
+              <option value="JazzCash">JazzCash</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Transaction ID / Reference (if available)</label>
+            <input type="text" name="Transaction ID" placeholder="Optional">
+          </div>
+          <div class="form-group">
+            <label>Payment Screenshot</label>
+            <label class="file-drop" id="fileDrop">
+              <span class="ficon">⤓</span>
+              <p id="fileText">Click to upload your payment screenshot</p>
+              <input type="file" name="attachment" accept="image/*" required style="display:none;" id="fileInput">
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Anything else? (optional)</label>
+            <textarea name="Message" placeholder="Questions, your goals, or anything you'd like Hamza to know"></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">Submit Payment Proof</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="check-circle">✓</div>
+          <h3>Got it — you're in the queue.</h3>
+          <p>Your payment proof has been sent. You'll be added to the private community within 24 hours and contacted on WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPayment(){document.getElementById('mainPage').classList.add('hidden');document.getElementById('payPage').classList.add('active');window.scrollTo(0,0);}
+  function showMain(){document.getElementById('payPage').classList.remove('active');document.getElementById('mainPage').classList.remove('hidden');window.scrollTo(0,0);}
+  function toggleFaq(btn){const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');}
+  function copyText(text,btn){navigator.clipboard.writeText(text).then(()=>{const o=btn.textContent;btn.textContent='Copied';setTimeout(()=>{btn.textContent=o;},1500);});}
+  const fileInput=document.getElementById('fileInput');
+  const fileText=document.getElementById('fileText');
+  fileInput.addEventListener('change',()=>{if(fileInput.files.length>0){fileText.textContent=fileInput.files[0].name;fileText.classList.add('fname');}});
+  const payForm=document.getElementById('payForm');
+  const submitBtn=document.getElementById('submitBtn');
+  payForm.addEventListener('submit',async function(e){
+    e.preventDefault();submitBtn.disabled=true;submitBtn.textContent='Submitting...';
+    try{
+      const fd=new FormData(payForm);
+      const res=await fetch(payForm.action,{method:'POST',body:fd});
+      const data=await res.json();
+      if(data.success){payForm.style.display='none';document.getElementById('formCard').querySelector('h3').style.display='none';document.getElementById('formCard').querySelector('.form-sub').style.display='none';document.getElementById('formSuccess').classList.add('active');}
+      else{alert('Something went wrong. Please try again or message on WhatsApp.');submitBtn.disabled=false;submitBtn.textContent='Submit Payment Proof';}
+    }catch(err){alert('Connection error. Please check your internet and try again.');submitBtn.disabled=false;submitBtn.textContent='Submit Payment Proof';}
+  });
+
+function animateCount(el){
+  const target=parseFloat(el.dataset.target);
+  const prefix=el.dataset.prefix||'';
+  const suffix=el.dataset.suffix||'';
+  if(target===0){el.innerHTML=prefix+'0'+suffix;return;}
+  const duration=1800;
+  const start=performance.now();
+  function update(now){
+    const elapsed=now-start;
+    const progress=Math.min(elapsed/duration,1);
+    const eased=1-Math.pow(1-progress,3);
+    const current=Math.round(eased*target);
+    el.innerHTML=prefix+current+suffix;
+    if(progress<1)requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      document.querySelectorAll('.count').forEach(animateCount);
+      observer.disconnect();
+    }
+  });
+},{threshold:0.3});
+observer.observe(document.querySelector('.hero-stats'));
+
+</script>
+</body>
+</html>
